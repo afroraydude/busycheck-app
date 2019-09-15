@@ -38,7 +38,7 @@ export default class Home extends Component {
   }
 
   goSomewhere() {
-    window.location.hash = '/app'
+    window.location.hash = '/buildings'
   }
 
   render() {

@@ -6,6 +6,7 @@ import Debug from "./views/Debug";
 import './App.css';
 import Home from './views/Home';
 import { Main } from './views/Main';
+import { AreaView } from './views/AreaView';
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/debug" component={Debug} />
-        <Route exact path="/app" component={Main} />
+        <Route exact path="/buildings" component={Main} />
+        <Route exact path="/buildings/:building/:floor?" component={AreaView} />
         {/** insert 404 page */}
       </Switch>
     </Router>
