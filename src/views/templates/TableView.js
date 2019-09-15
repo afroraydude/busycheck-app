@@ -59,9 +59,12 @@ export class TableView extends Component {
   }
 
   render() {
+    let tableOutput
+    if (this.state.tableData) tableOutput = this.state.tableData
+    else tableOutput = <p className="center-1" style={{ paddingTop: "5rem"}}>Loading realtime data...</p>
     return (
       <>
-      {this.state.tableData}
+      {tableOutput}
       </>
     )
   }
