@@ -46,7 +46,6 @@ export class AreaView extends Component {
         <Container>
           <h1>{this.state.name}</h1>
           <TableView area={this.state.area} />
-          <a href="javascript:history.back()">Go Back</a>
         </Container>
         </>
       }
