@@ -27,7 +27,6 @@ export default class Home extends Component {
           this.setState({
             apiStatus: "success"
           });
-          setTimeout(this.goSomewhere, 1000)
           
         } else {
           this.setState({
@@ -37,7 +36,8 @@ export default class Home extends Component {
       });
   }
 
-  goSomewhere() {
+  goSomewhere(event) {
+    event.preventDefault()
     window.location.hash = '/buildings'
   }
 
@@ -45,23 +45,29 @@ export default class Home extends Component {
     let output;
     switch (this.state.apiStatus) {
       case "success":
-        output = 'Entering app...'
+        output = (
+          <div className="row">
+            <div className='center-1'><Button variant='success' onClick={this.goSomewhere}>Enter app</Button> <Button variant='info'>About Us</Button></div>
+          </div>
+        )
         break;
       case "fail-1":
-        output = 'Failed to connect to BusyCheck servers'
+        output = <i>{'Failed to connect to BusyCheck servers'}</i>
         break;
       case "fail-2":
-        output = 'Technical difficulties with BusyCheck servers'
+        output = <i>{'Technical difficulties with BusyCheck servers'}</i>
         break;
       default:
-        output = 'Loading...'
+        output = <i>{'Connecting to the BusyCheck servers...'}</i>
         break;
     }
     return (
+      <div className="container">
       <div className="center-1">
         <img src={logo} style={{ height: window.innerHeight * 0.6 }} />
         <br />
-        <i>{output}</i>
+        {output}
+      </div>
       </div>
     );
   }

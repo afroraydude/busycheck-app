@@ -12,7 +12,7 @@ export class Main extends Component {
       {
         <>
         <Navbar variant="dark" bg="dark" expand="lg">
-          <Navbar.Brand  href="#home"><img src={logo} alt="" height="30" className="d-inline-block align-top" /></Navbar.Brand>
+          <Navbar.Brand  href="#/"><img src={logo} alt="" height="30" className="d-inline-block align-top" /></Navbar.Brand>
         </Navbar>
         <Container>
           <h1>Buildings</h1>

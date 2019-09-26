@@ -16,7 +16,15 @@ export class AreaView extends Component {
     let name = building.charAt(0).toUpperCase() + building.substring(1),
     url = building + '/' + floor
 
-    name += floor ? ' Floor #' + floor : ''
+    if (floor) {
+      if (floor.length <= 2) name += ' Floor #' + floor
+      else {
+        floor = floor.replace(/\./g, " ");
+        name += " " + floor
+      }
+    } else {
+      name = name.replace(/\./g, " ");
+    }
 
     this.state = {name: name, area: url}
   }
@@ -41,7 +49,7 @@ export class AreaView extends Component {
       {
         <>
         <Navbar variant="dark" bg="dark" expand="lg">
-          <Navbar.Brand  href="#home"><img src={logo} alt="" height="30" className="d-inline-block align-top" /></Navbar.Brand>
+          <Navbar.Brand  href="#/"><img src={logo} alt="" height="30" className="d-inline-block align-top" /></Navbar.Brand>
         </Navbar>
         <Container>
           <h1>{this.state.name}</h1>

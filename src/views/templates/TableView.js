@@ -14,13 +14,21 @@ import fenwick2 from './../../assets/img/fenwickmap2.jpg'
 import fenwick3 from './../../assets/img/fenwickmap3.jpg'
 import fenwick4 from './../../assets/img/fenwickmap4.jpg'
 import fenwick5 from './../../assets/img/fenwickmap5.jpg'
+import jcg from './../../assets/img/ground-floor.png'
+import jc1 from './../../assets/img/first-floor.png'
+import jc2 from './../../assets/img/second-floor.png'
+import jc3 from './../../assets/img/third-floor.png'
 
 let images = {
   "fenwick:1":fenwick1,
   "fenwick:2":fenwick2,
   "fenwick:3":fenwick3,
   "fenwick:4":fenwick4,
-  "fenwick:5":fenwick5
+  "fenwick:5":fenwick5,
+  "JC:1":jc1,
+  "JC:2":jc2,
+  "JC:3":jc3,
+  "JC:Ground.Floor":jcg
 }
 
 let config = require("./../../Config");
@@ -37,14 +45,19 @@ export class TableView extends Component {
         console.log(data);
         let innerHtml = data.data.map(obj => {
           let name = obj.key.split(":");
+          console.log(name.length)
           name = name[name.length - 1];
           name = name.replace(/\./g, " ");
           name = name.charAt(0).toUpperCase() + name.substring(1);
-          if (name.length < 3 && obj.key.split(":").length > 2)
+          console.log(name.length)
+          if (name.length <= 2 && obj.key.split(":").length > 2)
             name = "Zone " + name;
-          else if (name.length < 3 && obj.key.split(":").length === 2) {
+          else if (name.length <= 2 && obj.key.split(":").length === 2) {
             let url = "/#/buildings/" + this.props.area + name;
             name = "Floor " + name;
+            name = <a href={url}>{name}</a>;
+          } else if (obj.key.split(":").length === 2) {
+            let url = "/#/buildings/" + this.props.area + obj.key.split(":")[1];
             name = <a href={url}>{name}</a>;
           } else if (obj.key.split(":").length === 1) {
             let url = "/#/buildings/" + obj.key.split(":")[0];
