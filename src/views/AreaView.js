@@ -16,14 +16,14 @@ export class AreaView extends Component {
     let name = building.charAt(0).toUpperCase() + building.substring(1),
     url = building + '/' + floor
 
+    name = name.replace(/\./g, " ");
+
     if (floor) {
       if (floor.length <= 2) name += ' Floor #' + floor
       else {
         floor = floor.replace(/\./g, " ");
         name += " " + floor
       }
-    } else {
-      name = name.replace(/\./g, " ");
     }
 
     this.state = {name: name, area: url}

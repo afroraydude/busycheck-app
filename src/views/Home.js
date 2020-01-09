@@ -41,13 +41,18 @@ export default class Home extends Component {
     window.location.hash = '/buildings'
   }
 
+  goSomewhereElse(event) {
+    event.preventDefault()
+    window.location.hash = '/about'
+  }
+
   render() {
     let output;
     switch (this.state.apiStatus) {
       case "success":
         output = (
           <div className="row">
-            <div className='center-1'><Button variant='success' onClick={this.goSomewhere}>Enter app</Button> <Button variant='info'>About Us</Button></div>
+            <div className='center-1'><Button variant='success' onClick={this.goSomewhere}>Enter app</Button> <Button onClick={this.goSomewhereElse} variant='info'>About Us</Button></div>
           </div>
         )
         break;
